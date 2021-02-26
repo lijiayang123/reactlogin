@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        body {
+            background: url(./photo/1.jpg) no-repeat center;
+            background-size: 100%;
+        }
+
+        .a {
+            width: 400px;
+            height: 500px;
+            margin: 150px auto 0 auto;
+        }
+
+        .a1 {
+            border: 1 solid;
+            border-radius: 25px;
+            margin: 5px 0 0 0;
+        }
+
+        .input_1 {
+            width: 100%;
+            height: 50px;
+        }
+
+
+        .a2 {
+            float: left;
+        }
+
+        .a3 {
+            float: right;
+        }
+
+        .z {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script type="text/babel">
+        const VDOM = (
+            <div className="a">
+                <div className="z">欢迎光临</div>
+                <div className="a1">
+                    <input type="text" placeholder="username" className="use input_1" />
+                </div>
+                <div className="a1">
+                    <input type="text" placeholder="password" className="pas input_1" />
+                </div>
+                <div className="a1">
+                    <button type="submit" onClick={Login} className="sub input_1" >提交</button>
+                </div>
+                <div className="a2">
+                    <a href="/test.html" className="zc">新用户注册</a>
+                </div>
+                <div className="a3">
+                    <a href="/test.html" className="wjmm">忘记密码</a>
+                </div>
+                <p id="p"></p>
+            </div>
+
+        )
+        function Login() {  /*登陆验证*/
+            let rusername = "tom"
+            let rpassword = '123456'
+
+            var username = document.querySelector(".use").value; /*获得账号输入框的内容*/
+            var password = document.querySelector(".pas").value; /*获得密码输入内容*/
+
+            if (username == '') {
+                return alert('请填写用户名')
+            }
+            if (password == '') {
+                return alert('请填写密码')
+            }
+            if (username == rusername) {
+                if (password == rpassword) {
+                    alert('登录成功')
+
+                } else {
+                    if (password.length >= 6) {
+                        alert('密码错误')
+                    } else {
+                        alert('密码位数不能小于6位')
+                    }
+                }
+            } else {
+                alert('账号不存在')
+            }
+
+            // username==''?alert('请填写用户名'):'' 
+            // password==''?alert('请填写密码'):'' 
+            // username==rusername?(password==rpassword?alert('登录成功'):
+            //                         (password.length>=6?alert("密码错误"):
+            //                             alert("密码位数不能小于6位")))
+            //                     :alert("账号不存在");
+
+        }
+        ReactDOM.render(
+            VDOM,
+            document.getElementById('demo')
+        );
+    </script>
+
+</body>
+</html>
